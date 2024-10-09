@@ -1,179 +1,98 @@
-import React from "react";
 import styled from "styled-components";
+import React, { useState } from 'react';
 
-const Input = () => {
+const Search = ({ setSearchTerm }) => {
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);  
+  };
+
   return (
     <StyledWrapper>
-      <form className="search-bar" action="">
+      <div className="input-container">
         <input
-          className="search-input"
-          required
-          name="search"
-          type="search"
-          autoComplete="off"
+          type="text"
+          placeholder="Search "
+          className="input"
+          onChange={handleSearchChange} 
         />
-        <button type="submit" className="search-btn">
-          <span>Search</span>
-        </button>
-      </form>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          className="icon"
+        >
+          <g strokeWidth={0} id="SVGRepo_bgCarrier" />
+          <g
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            id="SVGRepo_tracerCarrier"
+          />
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <rect fill="white" height="24" width="24" />{" "}
+            <path
+              d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z"
+              clipRule="evenodd"
+              fillRule="evenodd"
+            />{" "}
+          </g>
+        </svg>
+      </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .search-bar {
-  display: flex;
-}
-
-.search-bar input,
-.search-btn, 
-.search-btn:before, 
-.search-btn:after {
-  transition: all 0.25s ease-out;
-}
-
-.search-bar input,
-.search-btn {
-  width: 3em;
-  height: 3em;
-}
-
-.search-bar input:invalid:not(:focus),
-.search-btn {
-  cursor: pointer;
-}
-
-.search-bar,
-.search-bar input:focus,
-.search-bar input:valid {
-  width: 100%;
-}
-
-.search-bar input:focus,
-.search-bar input:not(:focus) + .search-btn:focus {
-  outline: transparent;
-}
-
-.search-bar {
-  margin: auto;
-  padding: 1.5em;
-  justify-content: center;
-  max-width: 30em;
-}
-
-.search-bar input {
-  background: transparent;
-  border-radius: 1.5em;
-  box-shadow: 0 0 0 0.4em #171717 inset;
-  padding: 0.75em;
-  transform: translate(0.5em,0.5em) scale(0.5);
-  transform-origin: 100% 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.search-bar input::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-.search-bar input:focus,
-.search-bar input:valid {
-  background: #fff;
-  border-radius: 0.375em 0 0 0.375em;
-  box-shadow: 0 0 0 0.1em #d9d9d9 inset;
-  transform: scale(1);
-}
-
-.search-btn {
-  background: #171717;
-  border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
-  padding: 0.75em;
-  position: relative;
-  transform: translate(0.25em,0.25em) rotate(45deg) scale(0.25,0.125);
-  transform-origin: 0 50%;
-}
-
-.search-btn:before, 
-.search-btn:after {
-  content: "";
-  display: block;
-  opacity: 0;
-  position: absolute;
-}
-
-.search-btn:before {
-  border-radius: 50%;
-  box-shadow: 0 0 0 0.2em #f1f1f1 inset;
-  top: 0.75em;
-  left: 0.75em;
-  width: 1.2em;
-  height: 1.2em;
-}
-
-.search-btn:after {
-  background: #f1f1f1;
-  border-radius: 0 0.25em 0.25em 0;
-  top: 51%;
-  left: 51%;
-  width: 0.75em;
-  height: 0.25em;
-  transform: translate(0.2em,0) rotate(45deg);
-  transform-origin: 0 50%;
-}
-
-.search-btn span {
-  display: inline-block;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-}
-
-/* Active state */
-.search-bar input:focus + .search-btn,
-.search-bar input:valid + .search-btn {
-  background: #2762f3;
-  border-radius: 0 0.375em 0.375em 0;
-  transform: scale(1);
-}
-
-.search-bar input:focus + .search-btn:before, 
-.search-bar input:focus + .search-btn:after,
-.search-bar input:valid + .search-btn:before, 
-.search-bar input:valid + .search-btn:after {
-  opacity: 1;
-}
-
-.search-bar input:focus + .search-btn:hover,
-.search-bar input:valid + .search-btn:hover,
-.search-bar input:valid:not(:focus) + .search-btn:focus {
-  background: #0c48db;
-}
-
-.search-bar input:focus + .search-btn:active,
-.search-bar input:valid + .search-btn:active {
-  transform: translateY(1px);
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  body, input {
-    color: #f1f1f1;
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 
-  .search-bar input {
-    box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+  .input {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 18px 16px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
   }
 
-  .search-bar input:focus,
-	.search-bar input:valid {
-    background: #3d3d3d;
-    box-shadow: 0 0 0 0.1em #3d3d3d inset;
+  .input::placeholder {
+    color: transparent;
   }
 
-  .search-btn {
-    background: #f1f1f1;
+  .input:focus::placeholder {
+    color: rgb(131, 128, 128);
   }
-}
+
+  .input:focus,.input:not(:placeholder-shown) {
+    background-color: #fff;
+    border: 1px solid rgb(91, 107, 255);
+    width: 290px;
+    cursor: none;
+    padding: 18px 16px 18px 45px;
+  }
+
+  .icon {
+    position: absolute;
+    left: 0;
+    height: 45px;
+    width: 45px;
+    background-color: #fff;
+    border-radius: 99px;
+    z-index: -1;
+    fill: rgb(91, 107, 255);
+    border: 1px solid rgb(91, 107, 255);
+  }
+
+  .input:focus + .icon,.input:not(:placeholder-shown) + .icon {
+    z-index: 0;
+    background-color: transparent;
+    border: none;
+  }
 `;
 
-export default Input;
+export default Search;

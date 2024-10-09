@@ -6,20 +6,33 @@ body{
   align-items: center;
   justify-content: center; */
 }
+.form-top{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(95, 111, 82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
 .form-main{
-  background-color: rgb(169, 179, 136);
-  height: 500px;
-  width: 400px;
-  /* background-color: black; */
+  background-color: rgb(169, 179, 136); 
+   height: 600px;
+  width: 400px; 
+   /* background-color: black; */
   border-radius: 30px;
- color:  rgb(254, 250, 224);
+ color:  rgb(0, 0, 0); 
  display: flex;
+ flex-direction: column;
  justify-content: center;
  align-items: center;
- flex-direction: column;
+
 }
 .form-main h2{
-  margin-bottom: 80px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 form{
   display: flex;
@@ -40,9 +53,57 @@ form label{
   display: flex;
   justify-content: start;
 }
-button{
-  margin-top: 35px;
+.animated-button{
+  margin-left: 200px;
 }
-table  tr{
+
+.input-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: first baseline;
+}
+table {
+  width: 70%; /* Adjust to 100% or any width you need */
+  border-collapse: collapse; /* Ensure no gaps between borders */
+  margin-top: 20px; /* Adjust margin if needed */
+}
+
+th, td {
   border: 1px solid black;
+  padding: 10px 20px; /* Space inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+th {
+  background-color: #ddd; /* Optional header styling */
+  font-weight: bold;
+}
+
+td {
+  background-color: #f9f9f9; /* Optional cell styling */
+}
+
+.user-data{
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gender-box{
+  display: flex;
+  gap: 10px;
+  width: 300px;
+}
+.gender-box input{
+  height: 20px;
+  width: 20px;
+}
+.select-box{
+  margin-right: 100px;
+  width: 200px;
+
+}
+.select-box select{
+  width: 120px;
+  border-radius: 5px;
 }
